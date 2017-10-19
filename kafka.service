@@ -8,7 +8,6 @@ ConditionPathExists=/var/lib/kafka
 
 [Service]
 Type=simple
-Environment
 PIDFile=/var/run/kafka.pid
 WorkingDirectory=/var/lib/kafka
 EnvironmentFile=/etc/sysconfig/kafka
