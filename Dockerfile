@@ -6,7 +6,7 @@ RUN yum install -y wget make rpmdevtools
 
 ADD Makefile kafka.logrotate kafka.service kafka.spec kafka.sysconfig log4j.properties kafka-graphite-*.jar /root/
 
-RUN mkdir /root/RPMS
+RUN mkdir -p /root/RPMS
 
 WORKDIR /root
 
