@@ -16,11 +16,6 @@ Source1: kafka.service
 Source2: kafka.logrotate
 Source3: log4j.properties
 Source4: kafka.sysconfig
-%if %{build_with_metrics}
-# adding metric specific sources.
-Source6: metrics-graphite-2.2.0.jar
-Source7: kafka-graphite-1.0.5.jar
-%endif
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 Prefix: %{_prefix}
 Vendor: Apache Software Foundation
@@ -53,11 +48,6 @@ install -p -D -m 644 %{S:2} $RPM_BUILD_ROOT%{_sysconfdir}/logrotate.d/kafka
 install -p -D -m 644 %{S:3} $RPM_BUILD_ROOT%{_conf_dir}/
 install -p -D -m 644 %{S:4} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/kafka
 install -p -D -m 644 libs/* $RPM_BUILD_ROOT%{_prefix}/kafka/libs
-%if %{build_with_metrics}
-# adding metric specific sources.
-install -p -D -m 644 %{S:6} $RPM_BUILD_ROOT%{_prefix}/kafka/libs
-install -p -D -m 644 %{S:7} $RPM_BUILD_ROOT%{_prefix}/kafka/libs
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
